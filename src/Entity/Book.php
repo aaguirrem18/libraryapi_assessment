@@ -42,10 +42,15 @@ class Book implements \JsonSerializable
     private $anno;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\categories", inversedBy="categorie")
+     * @ORM\ManyToOne(targetEntity="App\Entity\Categories", inversedBy="books")
      * @ORM\JoinColumn(nullable=false)
      */
-    private $categorie;
+    private $categories;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $img;
 
     public function __construct()
     {
@@ -105,14 +110,28 @@ class Book implements \JsonSerializable
         return $this;
     }
 
-    public function getCategorie(): ?categories
+
+    public function getImg(): ?string
     {
-        return $this->categorie;
+        return $this->img;
     }
 
-    public function setCategorie(?categories $categorie): self
+    public function setImg(string $img): self
     {
-        $this->categorie = $categorie;
+        $this->img = $img;
+
+        return $this;
+    }
+
+
+    public function getCategorie(): ?Categories
+    {
+        return $this->categories;
+    }
+
+    public function setCategorie(?Categories $categories): self
+    {
+        $this->categories = $categories;
 
         return $this;
     }
@@ -130,9 +149,10 @@ class Book implements \JsonSerializable
             'description'  => $this->description,
             'author'  => $this->autor,
             'anno'    => $this->anno,
-            'categorie' => $this->getCategorie()->getName(),
+            'categories' => $this->getCategorie()->getName(),
         ];
     }
 
+ 
 
 }

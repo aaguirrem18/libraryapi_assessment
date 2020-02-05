@@ -7,12 +7,18 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 
-
 use App\Entity\Categories;
 use App\Entity\Book;
 
 use App\Repository\BookRepository;
 use App\Repository\CategoriesRepository;
+
+use Symfony\Component\Asset\Package;
+use Symfony\Component\Asset\VersionStrategy\EmptyVersionStrategy;
+
+
+//use booksImages\;
+
 
 class BooksController extends AbstractController
 {
@@ -44,9 +50,19 @@ class BooksController extends AbstractController
     
     public function index()
     {
-        return $this->render('books/index.html.twig', [
+        $package = new Package(new EmptyVersionStrategy());
+        echo $package->getUrl('assets/books/libro.jpg');
+
+        //booksImages\
+        echo "<img src='".$package->getUrl('assets/books/libro.jpg')."'>";
+        exit();
+
+
+        return new JsonResponse("api working !!",JsonResponse::HTTP_OK);
+
+        /*return $this->render('books/index.html.twig', [
             'controller_name' => 'BooksController',
-        ]);
+        ]);*/
     }
     
     public function getallBooks()

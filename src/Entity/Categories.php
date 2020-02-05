@@ -31,14 +31,16 @@ class Categories implements \JsonSerializable
      */
     private $description;
 
+
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Book", mappedBy="categorie", orphanRemoval=true)
+     * @ORM\OneToMany(targetEntity="App\Entity\Book", mappedBy="categories")
      */
-    private $categorie;
+    private $books;
     
     public function __construct()
     {
-        $this->categorie = new ArrayCollection();
+        //$this->book = new ArrayCollection();
+        $this->books = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -70,37 +72,6 @@ class Categories implements \JsonSerializable
         return $this;
     }
 
-    /**
-     * @return Collection|Book[]
-     */
-    public function getCategorie(): Collection
-    {
-        return $this->categorie;
-    }
-
-    public function addCategorie(Book $categorie): self
-    {
-        if (!$this->categorie->contains($categorie)) {
-            $this->categorie[] = $categorie;
-            $categorie->setCategorie($this);
-        }
-
-        return $this;
-    }
-
-    public function removeCategorie(Book $categorie): self
-    {
-        if ($this->categorie->contains($categorie)) {
-            $this->categorie->removeElement($categorie);
-            // set the owning side to null (unless already changed)
-            if ($categorie->getCategorie() === $this) {
-                $categorie->setCategorie(null);
-            }
-        }
-
-        return $this;
-    }
-
     public function jsonSerialize(): array
     {
         return [
@@ -108,6 +79,14 @@ class Categories implements \JsonSerializable
             'name'  => $this->name,
             'description'  => $this->description,
         ];
+    }
+
+    /**
+     * @return Collection|Book[]
+     */
+    public function getBooks(): Collection
+    {
+        return $this->books;
     }
 
 }

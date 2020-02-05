@@ -14,6 +14,9 @@ App\Entity\Book:
     anno:
       groups:
         ['book_read','book_write']
-    categorie:
+    categories:
+      groups:
+        ['book_read','book_write']
+    img:
       groups:
         ['book_read','book_write']
