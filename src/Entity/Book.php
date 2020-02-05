@@ -149,7 +149,7 @@ class Book implements \JsonSerializable
             'description'  => $this->description,
             'author'  => $this->autor,
             'anno'    => $this->anno,
-            'categories' => $this->getCategorie()->getName(),
+            'categorie' => $this->getCategorie()->getName(),
         ];
     }
 

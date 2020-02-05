@@ -51,12 +51,11 @@ class BooksController extends AbstractController
     public function index()
     {
         $package = new Package(new EmptyVersionStrategy());
-        echo $package->getUrl('assets/books/libro.jpg');
 
         //booksImages\
-        echo "<img src='".$package->getUrl('assets/books/libro.jpg')."'>";
+       /* echo "<img src='".{{ assets('/books/libro.jpg') }}."'>";
         exit();
-
+*/
 
         return new JsonResponse("api working !!",JsonResponse::HTTP_OK);
 
