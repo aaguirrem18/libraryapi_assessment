@@ -44,6 +44,6 @@ security:
         - { path: ^/api/login, roles: IS_AUTHENTICATED_ANONYMOUSLY }
         #- { path: ^/api/books,       roles: IS_AUTHENTICATED_FULLY }
         - { path: ^/api/user,       roles: IS_AUTHENTICATED_FULLY }
-        - { path: ^/api/categories,       roles: IS_AUTHENTICATED_FULLY }
+        #- { path: ^/api/categories,       roles: IS_AUTHENTICATED_FULLY }
 
 
