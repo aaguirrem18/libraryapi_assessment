@@ -41,27 +41,12 @@ class BooksController extends AbstractController
         $this->catRepository = $catRepository;
     }
 
-
-
-    //
     // METHODS GENERATED WITHOUT SWAGGER / API PLATFORM
     // OPTION 2
     // NOT USED
-    
     public function index()
     {
-        $package = new Package(new EmptyVersionStrategy());
-
-        //booksImages\
-       /* echo "<img src='".{{ assets('/books/libro.jpg') }}."'>";
-        exit();
-*/
-
         return new JsonResponse("api working !!",JsonResponse::HTTP_OK);
-
-        /*return $this->render('books/index.html.twig', [
-            'controller_name' => 'BooksController',
-        ]);*/
     }
     
     public function getallBooks()
